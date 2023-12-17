@@ -5,17 +5,7 @@ export interface ILayoutComponentProps {}
 
 const LayoutComponent: React.FunctionComponent<ILayoutComponentProps> = (props) => {
   return (
-    <div
-      style={{
-        border: 2,
-        padding: 2,
-        borderColor: 'black',
-        borderStyle: 'dashed',
-        margin: 5,
-        width: 500,
-        height: 500,
-      }}
-    >
+    <div className='border-2 p-2 border-black bg-cyan-900 border-dashed m-5 w-500 h-500'>
       <Outlet />
     </div>
   )

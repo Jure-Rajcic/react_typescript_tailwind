@@ -13,10 +13,10 @@ const AboutPage: React.FunctionComponent<IAboutPageProps> = (props) => {
     } else {
       setMessage('No number was provided')
     }
-  }, [])
+  }, [number])
 
   return (
-    <div>
+    <div className='text-red-500'>
       <p>This is the about page.</p>
       <p>{message}</p>
     </div>
