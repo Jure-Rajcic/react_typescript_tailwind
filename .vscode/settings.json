@@ -1,0 +1,13 @@
+{
+  "editor.bracketPairColorization.enabled": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": false,
+  "eslint.validate": ["javascript", "typescriptreact"],
+
+}
