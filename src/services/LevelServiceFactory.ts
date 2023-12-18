@@ -5,7 +5,6 @@ export default class LocalServiceFactory {
   private static levelService: ILevelService
 
   public static getLevelService(): ILevelService {
-    if (!LocalServiceFactory.levelService) LocalServiceFactory.initializeLevelService()
     return LocalServiceFactory.levelService
   }
 

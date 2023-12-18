@@ -33,19 +33,3 @@ const SelectLevelPage: React.FC<ISelectLevelPageProps> = (props) => {
 }
 
 export default SelectLevelPage
-
-// interface IGridTileProps {
-//   level: number
-// }
-
-// const GridTile: React.FC<IGridTileProps> = (props) => {
-//   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-//     console.log('clicked')
-//   }
-
-//   return (
-//     <div className='bg-slate-600 hover:bg-slate-800' onClick={handleClick}>
-//       <p className=' bg-cyan-400'>{props.level}</p>
-//     </div>
-//   )
-// })

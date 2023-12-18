@@ -22,13 +22,12 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
     }
 
     initializeLevelService()
-  })
+  }, [])
 
   if (!isInitialized) {
     // You can render a loading state or return null while the service is being initialized
     return <p>Loading...</p>
   }
-
   return (
     <BrowserRouter>
       <Routes>
