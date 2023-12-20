@@ -1,36 +1,23 @@
 import IGameModel from '../models/IGameModel'
-import React, { useState, useCallback, useEffect } from 'react'
-
-// Rest of your component code...
+import React, { useState, useCallback } from 'react'
+import AStyler from './styles/AStyler'
+import DefaultStyler from './styles/DefaultStyler'
 
 export interface ILevelComponentProps {
   gameModel: IGameModel
 }
 
 const LevelComponent: React.FunctionComponent<ILevelComponentProps> = (props) => {
-  const [, updateState] = useState<number>(0)
-  const forceUpdate = useCallback(() => updateState((prevState: number) => prevState + 1), [])
-
-  useEffect(() => {
-    const keyMapping: { [key: string]: () => void } = {
-      ArrowUp: props.gameModel.moveUp,
-      ArrowDown: props.gameModel.moveDown,
-      ArrowLeft: props.gameModel.moveLeft,
-      ArrowRight: props.gameModel.moveRight,
-    }
-
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (keyMapping[event.key]) keyMapping[event.key]()
-    }
-    window.addEventListener('keydown', handleKeyPress)
-    return () => window.removeEventListener('keydown', handleKeyPress)
-  })
+  const gameModel: IGameModel = props.gameModel
 
   // Register the forceUpdate callback with the gameModel
-  props.gameModel.setUpdateCallback(forceUpdate)
+  const [, updateState] = useState<number>(0)
+  const forceUpdate = useCallback(() => updateState((prevState: number) => prevState + 1), [])
+  gameModel.setUpdateCallback(forceUpdate)
 
-  const map = props.gameModel.getMap()
+  const map = gameModel.getMap()
   const width = map[0].length
+  const styler: AStyler = new DefaultStyler()
 
   return (
     <div className={`w-screen h-screen flex justify-center items-center `}>
@@ -42,7 +29,7 @@ const LevelComponent: React.FunctionComponent<ILevelComponentProps> = (props) =>
           row.map((col, colIndex) => (
             <div key={`${rowIndex}-${colIndex}`} className={`bg-green`}>
               <div className='w-10 h-10 flex justify-center items-center'>
-                {map[rowIndex][colIndex]({})}
+                {styler.render(map[rowIndex][colIndex])}
               </div>
             </div>
           )),

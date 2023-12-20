@@ -9052,6 +9052,11 @@ tryer@^1.0.1:
   resolved "https://registry.npmjs.org/tryer/-/tryer-1.0.1.tgz"
   integrity sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==
 
+ts-data.stack@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/ts-data.stack/-/ts-data.stack-1.0.6.tgz"
+  integrity sha512-zYGjT8xKKbe0H5ay2QiYDDSMO0Xx/eLLMEiltqHcbwoF4mkgAJWlLVZKPheg+mn9VVM8SHzUFsoalUlM1BcCdg==
+
 ts-interface-checker@^0.1.9:
   version "0.1.13"
   resolved "https://registry.npmjs.org/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz"
