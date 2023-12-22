@@ -1,4 +1,4 @@
-import IGameSquare from '../../logic/IGameSquare'
+import GameSquare from '../../models/IGameSquare'
 import Box from '../../logic/game_objects/Box'
 import Nothing from '../../logic/game_objects/Nothing'
 import Player from '../../logic/game_objects/Player'
@@ -9,9 +9,9 @@ import { ReactElement } from 'react'
 import IGameObject from '../../models/IGameObject'
 
 export default abstract class AStyler {
-  public render(square: IGameSquare): ReactElement {
-    if (square instanceof EmptySquare) return this.renderEmptySquare(square.occupant)
-    if (square instanceof TargetSquare) return this.renderTargetSquare(square.occupant)
+  public render(square: GameSquare): ReactElement {
+    if (square instanceof EmptySquare) return this.renderEmptySquare(square.getOccupant())
+    if (square instanceof TargetSquare) return this.renderTargetSquare(square.getOccupant())
     throw new Error('Unknown square type')
   }
 

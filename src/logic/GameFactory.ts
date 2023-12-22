@@ -1,4 +1,4 @@
-import IGameSquare from './IGameSquare'
+import GameSquare from '../models/IGameSquare'
 import EmptySquare from './game_squares/EmptySquare'
 import Wall from './game_objects/Wall'
 import Player from './game_objects/Player'
@@ -17,32 +17,32 @@ const BOX_ON_TARGET_SQUARE: string = '*'
 const NOTHING_ON_TARGET_SQUARE: string = '.'
 
 export default class GameFactory {
-  public static createLevel(map: string[][]): IGameSquare[][] {
+  public static createLevel(map: string[][]): GameSquare[][] {
     return map.map((row, rowIndex) =>
       row.map((col, colIndex) => {
-        return this.createGameObject(col)
+        return this.createGameObject(col, [rowIndex, colIndex])
       }),
     )
   }
 
-  private static createGameObject(id: string): IGameSquare {
+  private static createGameObject(id: string, [row, col]: [number, number]): GameSquare {
     switch (id) {
       case WALL_ON_EMPTY_SQUERE:
-        return new EmptySquare(new Wall())
+        return new EmptySquare([row, col], new Wall())
       case PLAYER_ON_EMPTY_SQUERE:
-        return new EmptySquare(new Player())
+        return new EmptySquare([row, col], new Player())
       case BOX_ON_EMPTY_SQUERE:
-        return new EmptySquare(new Box())
+        return new EmptySquare([row, col], new Box())
       case NOTHING_ON_EMPTY_SQUERE:
-        return new EmptySquare(new Nothing())
+        return new EmptySquare([row, col], new Nothing())
       case WALL_ON_TARGET_SQUARE:
-        return new TargetSquare(new Wall())
+        return new TargetSquare([row, col], new Wall())
       case PLAYER_ON_TARGET_SQUARE:
-        return new TargetSquare(new Player())
+        return new TargetSquare([row, col], new Player())
       case BOX_ON_TARGET_SQUARE:
-        return new TargetSquare(new Box())
+        return new TargetSquare([row, col], new Box())
       case NOTHING_ON_TARGET_SQUARE:
-        return new TargetSquare(new Nothing())
+        return new TargetSquare([row, col], new Nothing())
       default:
         throw new Error(`Unknown game component identifier ${id}`)
     }

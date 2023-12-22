@@ -1,10 +1,5 @@
-import IGameObject from '../../models/IGameObject'
-import IGameSquare from '../IGameSquare'
+import GameSquare from '../../models/IGameSquare'
 
-export default class TargetSquare implements IGameSquare {
-  occupant: IGameObject
+export default class TargetSquare extends GameSquare {}
 
-  constructor(occupant: IGameObject) {
-    this.occupant = occupant
-  }
-}
+// TODO dodat listenera kojim se proverava jeli level zavrsen

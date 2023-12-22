@@ -25,6 +25,12 @@ const LevelPage: React.FunctionComponent<ILevelPageProps> = (props) => {
         case 'ArrowRight':
           gameModel.move(Move.RIGHT)
           break
+        case 'z':
+          gameModel.undoMove()
+          break
+        case 'r':
+          gameModel.redoMove()
+          break
       }
     }
     window.addEventListener('keydown', handleKeyPress)
