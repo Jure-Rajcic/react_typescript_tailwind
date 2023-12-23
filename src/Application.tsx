@@ -13,6 +13,7 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
 
   useEffect(() => {
     const initializeLevelService = async () => {
+      console.log('Initializing level service...')
       try {
         await LevelServiceFactory.initializeLevelService()
         setIsInitialized(true)

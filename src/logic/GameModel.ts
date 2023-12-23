@@ -1,7 +1,5 @@
 import GameFactory from './GameFactory'
 import IGameModel from '../models/IGameModel'
-import ILevelInfo from '../models/ILevelInfo'
-import ILevelService from '../models/ILevelService'
 import LocalServiceFactory from '../services/LevelServiceFactory'
 import GameSquare from '../models/IGameSquare'
 import { Move } from './constants/Move'
@@ -11,26 +9,15 @@ import CommandManeger from './move/MoveManeger'
 import MoveCommand from './move/command/MoveCommand'
 
 export default class GameModel implements IGameModel {
-  // pass function to update map to constructor
   private updateCallback: () => void
-  private readonly levelInfo: ILevelInfo
   private readonly map: GameSquare[][]
   private readonly moveManager: CommandManeger<MoveCommand>
 
   constructor(levelId: string) {
-    // setting up updateCallback
     this.updateCallback = () => {}
 
-    // setting up levelInfo
-    const levelService: ILevelService = LocalServiceFactory.getLevelService()
-    this.levelInfo = levelService.getLevelInfo(parseInt(levelId))
-
-    // TODO addapt different levelInfo.Layouts to something with what gameFactory can work with
-    const map: string[][] = this.levelInfo.Layout.map((row: string) => row.split(''))
-    const width: number = map.reduce((max, row) => (row.length > max ? row.length : max), 0)
-    map.forEach((row) => {
-      while (row.length < width) row.push(' ')
-    })
+    console.log('levelId', levelId)
+    const map: string[][] = LocalServiceFactory.getLevelService().getLevelLayout(parseInt(levelId))
     this.map = GameFactory.createLevel(map)
 
     this.moveManager = new CommandManeger()

@@ -10,7 +10,7 @@ export interface ISelectLevelPageProps {}
 const SelectLevelPage: React.FC<ISelectLevelPageProps> = (props) => {
   const navigate = useNavigate()
   const levelService: ILevelService = LocalServiceFactory.getLevelService()
-
+  console.log('total levels: ' + levelService.getTotalLevelsCount())
   const redirect = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, id: number) => {
     console.log('redirecting to level ' + id)
     navigate(`/level/${id}`)
